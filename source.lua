@@ -201,7 +201,6 @@ G2L["16"]["Position"] = UDim2.new(0.29975, 0, 0.03697, 0);
 
 -- StarterGui.NORESETDELETE.Motiona | v0.0.1.MainGUI.Gui.Background.Animations.TextBox
 G2L["17"] = Instance.new("TextBox", G2L["c"]);
-G2L["17"]["CursorPosition"] = -1;
 G2L["17"]["TextColor3"] = Color3.fromRGB(171, 171, 171);
 G2L["17"]["PlaceholderColor3"] = Color3.fromRGB(205, 205, 205);
 G2L["17"]["BorderSizePixel"] = 0;
@@ -317,7 +316,6 @@ G2L["21"]["Position"] = UDim2.new(0.16456, 0, 0.5, 0);
 
 -- StarterGui.NORESETDELETE.Motiona | v0.0.1.MainGUI.Gui.Background.CustomAnimationSet.Frame.ScrollingFrame.idle.TextBox
 G2L["22"] = Instance.new("TextBox", G2L["1e"]);
-G2L["22"]["CursorPosition"] = -1;
 G2L["22"]["TextColor3"] = Color3.fromRGB(130, 130, 130);
 G2L["22"]["PlaceholderColor3"] = Color3.fromRGB(195, 195, 195);
 G2L["22"]["BorderSizePixel"] = 0;
@@ -384,7 +382,6 @@ G2L["27"]["Position"] = UDim2.new(0.16456, 0, 0.5, 0);
 
 -- StarterGui.NORESETDELETE.Motiona | v0.0.1.MainGUI.Gui.Background.CustomAnimationSet.Frame.ScrollingFrame.run.TextBox
 G2L["28"] = Instance.new("TextBox", G2L["24"]);
-G2L["28"]["CursorPosition"] = -1;
 G2L["28"]["TextColor3"] = Color3.fromRGB(130, 130, 130);
 G2L["28"]["PlaceholderColor3"] = Color3.fromRGB(195, 195, 195);
 G2L["28"]["BorderSizePixel"] = 0;
@@ -715,7 +712,6 @@ G2L["45"]["Position"] = UDim2.new(0.16456, 0, 0.5, 0);
 
 -- StarterGui.NORESETDELETE.Motiona | v0.0.1.MainGUI.Gui.Background.CustomAnimationSet.Frame.ScrollingFrame.swimidle.TextBox
 G2L["46"] = Instance.new("TextBox", G2L["42"]);
-G2L["46"]["CursorPosition"] = -1;
 G2L["46"]["TextColor3"] = Color3.fromRGB(130, 130, 130);
 G2L["46"]["PlaceholderColor3"] = Color3.fromRGB(195, 195, 195);
 G2L["46"]["BorderSizePixel"] = 0;
@@ -1822,7 +1818,7 @@ G2L_MODULES[G2L["8"]] = {
 					SoundId = SoundEffects.sounds.Sleeve[1],
 					PlaybackSpeed = math.random(800,2000)/1000,
 				}, true)
-				Operators.Functions.Properties(tble[1], {GroupTransparency = 1, Position = tble[2].Position + Add}, TwInfo)
+				Operators.Functions.Properties(tble[1], {Interactable = false, GroupTransparency = 1, Position = tble[2].Position + Add}, TwInfo)
 				task.wait(math.random(0,350)/1000)
 			end
 			--
@@ -1845,8 +1841,8 @@ G2L_MODULES[G2L["8"]] = {
 		gi["Setup"] = function ()
 			for _, ins: Instance in ipairs(Background:GetChildren()) do
 				if ins:IsA("CanvasGroup") then
-					table.insert(OriginalPositions, {ins, {Visible = ins.Visible, GroupTransparency = ins.GroupTransparency, Position = ins.Position}})
-					ins.Visible = false
+					table.insert(OriginalPositions, {ins, {Interactable = true, GroupTransparency = ins.GroupTransparency, Position = ins.Position}})
+					ins.Interactable = false
 					ins.GroupTransparency = 1
 					ins.Position = ins.Position + UDim2.new(0, 0, .2, 0)
 				end
@@ -2726,9 +2722,9 @@ G2L_MODULES[G2L["5e"]] = {
 							speed /= Operators:getHeightScale()
 						end
 						if speed > 1.00 then
-					local scale = 10.0
-					Operators:playAnimation("swim", 0.4, Humanoid)
-					Operators:setAnimationSpeed(speed / scale)
+							local scale = 10.0
+							Operators:playAnimation("swim", 0.4, Humanoid)
+							Operators:setAnimationSpeed(speed / scale)
 					pose = "Swimming"
 				else
 					Operators:playAnimation("swimidle", 0.4, Humanoid)
