@@ -1843,7 +1843,7 @@ G2L_MODULES[G2L["8"]] = {
 
 			DimmerFrame.Transparency = 1
 
-			Background.TextLabel.Text = string.format("Press %s to Open Motiona.", tostring(Settings.Booleans.Gui.Key.Name))
+			Background.TextLabel.Text = string.format("Press %s to Open %s.", tostring(Settings.Booleans.Gui.Key.Name), script.Parent.Name:match("%S+"))
 			local Platform = Operators.Get.Platform()
 			if Platform ~= "Mobile" then
 				OpenCloseButton.Visible = false
@@ -1972,6 +1972,12 @@ G2L_MODULES[G2L["5e"]] = {
 
 		local Constants = require(System.Constants)
 		local GameServices = Constants.Services
+
+		local GetCharacter = function (player: Player | nil)
+			local plyr = player or GameServices.Players.LocalPlayer
+			local char = plyr.Character
+			return char and char:FindFirstChild("Humanoid") and char:FindFirstChild("HumanoidRootPart") and char:FindFirstChild("Head") and char.Humanoid.Parent
+		end
 
 		function anim:GetFormatTable()
 			return {
@@ -2761,16 +2767,16 @@ G2L_MODULES[G2L["5e"]] = {
 				function Operators:animateTool()
 					if (toolAnim == "None") then
 						Operators:playToolAnimation("toolnone", toolTransitionTime, Humanoid, Enum.AnimationPriority.Idle)
-						return
-					end
+				return
+			end
 
-					if (toolAnim == "Slash") then
-						Operators:playToolAnimation("toolslash", 0, Humanoid, Enum.AnimationPriority.Action)
-						return
-					end
+			if (toolAnim == "Slash") then
+				Operators:playToolAnimation("toolslash", 0, Humanoid, Enum.AnimationPriority.Action)
+				return
+			end
 
-					if (toolAnim == "Lunge") then
-						Operators:playToolAnimation("toollunge", 0, Humanoid, Enum.AnimationPriority.Action)
+			if (toolAnim == "Lunge") then
+				Operators:playToolAnimation("toollunge", 0, Humanoid, Enum.AnimationPriority.Action)
 				return
 			end
 		end
@@ -2915,6 +2921,10 @@ G2L_MODULES[G2L["5e"]] = {
 					end
 				end
 			end
+		end
+		
+		if Character.Parent == nil then
+			anim:New(GetCharacter())
 		end
 		
 		warn("Animate Ended.")
