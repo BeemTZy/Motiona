@@ -5,8 +5,6 @@ v0.0.1 ALPHA : BeemzZy : Created In 28/11/2024 : Released In 29/11/2024
 
 Script: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()```
 
-Enjoy exploring our script, and have a wonderfully *Motiona*-filled day!
-
 ## We have
  • Animations
  • Custom Animations Set
@@ -24,3 +22,4 @@ Enjoy exploring our script, and have a wonderfully *Motiona*-filled day!
 # Full GUI from Motiona v0.0.1
 ![image](https://github.com/user-attachments/assets/0572881e-483e-4c3f-b7b4-4825a6ecd658)
 
+Enjoy Motiona, and have a wonderfully *Motiona*-filled day!
