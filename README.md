@@ -3,7 +3,7 @@ Motiona represents an enhanced and refined iteration of Bubble.
 
 v0.0.1 ALPHA : BeemzZy : Created In 28/11/2024 : Released In 29/11/2024
 
-script: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()```
+Script: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()```
 
 Enjoy exploring our script, and have a wonderfully *Motiona*-filled day!
 
@@ -21,6 +21,6 @@ Enjoy exploring our script, and have a wonderfully *Motiona*-filled day!
 # Custom Animations Set Bar
 ![image](https://github.com/user-attachments/assets/e7bd54f6-ef30-4b4b-8735-7015e5e87726)
 
-# Full UI v0.0.1
+# Full GUI from Motiona v0.0.1
 ![image](https://github.com/user-attachments/assets/0572881e-483e-4c3f-b7b4-4825a6ecd658)
 
