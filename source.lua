@@ -2923,10 +2923,6 @@ G2L_MODULES[G2L["5e"]] = {
 			end
 		end
 		
-		if Character.Parent == nil then
-			anim:New(GetCharacter())
-		end
-		
 		warn("Animate Ended.")
 		return true
 	end)
@@ -4007,7 +4003,9 @@ local script = G2L["1"];
 	
 	-- Local-Functions
 	local function Update ()
-		--
+		if Character() and Character():FindFirstChild("Animate") then
+			Animate:New(Character())
+		end
 	end
 	
 	local function Render ()
