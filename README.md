@@ -1,16 +1,29 @@
 # Motiona
 Motiona represents an enhanced and refined iteration of Bubble.
 
-v0.0.1 ALPHA : BeemzZy : Created In 28/11/2024 : Released In 29/11/2024
+Current Version 
+**`
+v0.0.1 ALPHA *
+`**
 
-Script: ```loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()```
+Created by **BeemzZy** 
 
+Created In **28/11/2024**
+
+Released In **29/11/2024**
+
+Crafted in: **Roblox Studio**
+
+Script: 
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()
+```
 ## An overview of our current features alongside the latest changes and enhancements.
  • Complete Bundle of Animations (including previously canceled and exclusive, unreleased ones)
 
  • Fully Customizable Animation Sets
 
- • Emotes Temporarily Removed (working on an improved implementation)
+ • Emotes (not roblox emotes) Temporarily Removed (working on an improved implementation)
 
  • Superior to Bubble? Share your thoughts!"
 
