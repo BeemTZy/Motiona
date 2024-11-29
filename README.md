@@ -1,4 +1,7 @@
 # Motiona
+
+![Motiona Logo Border Colored](https://github.com/user-attachments/assets/e8692124-a3f8-4a75-a427-b16aba70dcac)
+
 Motiona represents an enhanced and refined iteration of Bubble.
 
 Current Version 
