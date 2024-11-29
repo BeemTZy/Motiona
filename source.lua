@@ -2005,7 +2005,11 @@ G2L_MODULES[G2L["5e"]] = {
 		end
 
 		function anim:GetFormatTable()
-			return BundleAnimations["Original Animation Pack"]
+			local formatTable = {}
+			for i,v in pairs(BundleAnimations["Original Animation Pack"]) do -- Doing this To Avoid Changes to the "Original Animation Pack"
+				formatTable[i] = v
+			end
+			return formatTable
 		end
 
 		function anim:FindAssetInConfig(config, assets)
@@ -2058,6 +2062,7 @@ G2L_MODULES[G2L["5e"]] = {
 		end
 
 		function anim:New(Character: Model, Animations: {} | nil)
+			-- Checking
 			if not Character then
 				return
 			end
@@ -2071,12 +2076,14 @@ G2L_MODULES[G2L["5e"]] = {
 			else
 				return
 			end
-			--
+
+			-- Updates Animation if only Animations were given.
 			if Animations then
 				spawn(function()
 					anim:Update(Animations)
 				end)
 			end
+
 			-- Fixing
 			do -- Animation Mixing Fix
 				-- Clears 5 times, because 1 time isn't enough.
@@ -2095,16 +2102,44 @@ G2L_MODULES[G2L["5e"]] = {
 					task.wait()
 				end
 			end
+
 			--
 			if anim.Animate.Active then
 				anim.Animate.Active = false
 				repeat task.wait() until anim.Animate.Character == nil
 			end
+
 			-- CleanUp
 			local Animate = Character:FindFirstChild("Animate")
-			if Animate then
-				Animate:Destroy()
+			local PlayEmote = nil
+			if Animate and Animate:IsA("LocalScript") then
+				if not Animate:FindFirstChild("Claimed") then
+					Animate:Destroy()
+					local NewAnimate = Instance.new("LocalScript")
+					local Claimed = Instance.new("Configuration")
+					Claimed.Name = "Claimed"
+					Claimed.Parent = NewAnimate
+
+					NewAnimate.Name = "Animate"
+					Animate = NewAnimate
+				end
+
+				-- Creates PlayEmote
+				PlayEmote = Animate:FindFirstChild("PlayEmote") or Instance.new("BindableFunction")
+				if PlayEmote.Name ~= "PlayEmote" then
+					PlayEmote.Name = "PlayEmote"
+				end
+				PlayEmote.Parent = Animate
+
+				-- Final
+				Animate.Parent = Character
+			else
+				return warn("Cannot find Animate!")
 			end
+			if not PlayEmote then
+				return warn("Cannot find or Create PlayEmote.")
+			end
+
 			-- Animate Loader
 			spawn(function()
 				local success, errMsg = pcall(function()
@@ -2685,46 +2720,46 @@ G2L_MODULES[G2L["5e"]] = {
 					end
 
 					function Operators:onClimbing(speed)
-						if userAnimateScaleRun then
-							speed /= Operators:getHeightScale()
-						end
-						local scale = 5.0
-						Operators:playAnimation("climb", 0.1, Humanoid)
-						Operators:setAnimationSpeed(speed / scale)
-						pose = "Climbing"
-					end
+				if userAnimateScaleRun then
+					speed /= Operators:getHeightScale()
+				end
+				local scale = 5.0
+				Operators:playAnimation("climb", 0.1, Humanoid)
+				Operators:setAnimationSpeed(speed / scale)
+				pose = "Climbing"
+			end
 
-					function Operators:onGettingUp()
-						pose = "GettingUp"
-					end
+			function Operators:onGettingUp()
+				pose = "GettingUp"
+			end
 
-					function Operators:onFreeFall()
-						if (jumpAnimTime <= 0) then
-							Operators:playAnimation("fall", fallTransitionTime, Humanoid)
-						end
-						pose = "FreeFall"
-					end
+			function Operators:onFreeFall()
+				if (jumpAnimTime <= 0) then
+					Operators:playAnimation("fall", fallTransitionTime, Humanoid)
+				end
+				pose = "FreeFall"
+			end
 
-					function Operators:onFallingDown()
-						pose = "FallingDown"
-					end
+			function Operators:onFallingDown()
+				pose = "FallingDown"
+			end
 
-					function Operators:onSeated()
-						pose = "Seated"
-					end
+			function Operators:onSeated()
+				pose = "Seated"
+			end
 
-					function Operators:onPlatformStanding()
-						pose = "PlatformStanding"
-					end
+			function Operators:onPlatformStanding()
+				pose = "PlatformStanding"
+			end
 
-					function Operators:onSwimming(speed)
-						if userAnimateScaleRun then
-							speed /= Operators:getHeightScale()
-						end
-						if speed > 1.00 then
-							local scale = 10.0
-							Operators:playAnimation("swim", 0.4, Humanoid)
-							Operators:setAnimationSpeed(speed / scale)
+			function Operators:onSwimming(speed)
+				if userAnimateScaleRun then
+					speed /= Operators:getHeightScale()
+				end
+				if speed > 1.00 then
+					local scale = 10.0
+					Operators:playAnimation("swim", 0.4, Humanoid)
+					Operators:setAnimationSpeed(speed / scale)
 					pose = "Swimming"
 				else
 					Operators:playAnimation("swimidle", 0.4, Humanoid)
@@ -2885,7 +2920,7 @@ G2L_MODULES[G2L["5e"]] = {
 			end))
 
 			-- emote bindable hook
-			script:WaitForChild("PlayEmote").OnInvoke = function(emote)
+			PlayEmote.OnInvoke = function(emote)
 				-- Only play emotes when idling
 				if pose ~= "Standing" then
 					return
@@ -2939,7 +2974,7 @@ G2L_MODULES[G2L["5e"]] = {
 			--warn("Animate Ended.")
 			return true
 		end)
-		print(success, errMsg)
+		if not success then print(errMsg) end
 	end)
 end
 
@@ -4025,17 +4060,24 @@ local script = G2L["1"];
 	
 	-- Local-Functions
 	local function Update ()
-		if Character() and Character():FindFirstChild("Animate") then
-			local IsOriginalAnimationsExist = (not OriginalAnimations)
-			-- Updates Original Animation
-			OriginalAnimations = Operators.Get.Animations(Character().Animate)
-			BundleAnimations["Original Animation Pack"] = OriginalAnimations
-			
-			if not OriginalAnimations then -- only run once.
-				Animate:Update(OriginalAnimations)
+		local Character = Character()
+		if Character then
+			local AnimateInstance = Character:FindFirstChild("Animate")
+			local Claimed = AnimateInstance:FindFirstChild("Claimed")
+			if AnimateInstance and AnimateInstance:IsA("LocalScript") and not Claimed then
+				local IsOriginalAnimationsExist = (not OriginalAnimations)
+				
+				-- Updates Original Animation
+				OriginalAnimations = Operators.Get.Animations(AnimateInstance)
+				BundleAnimations["Original Animation Pack"] = OriginalAnimations
+	
+				if not OriginalAnimations then -- only run once.
+					Animate:Update(OriginalAnimations)
+				end
+				
+				-- Automatically Set Motiona Animation.
+				Animate:New(Character)
 			end
-			-- Automatically Set Motiona Animation.
-			Animate:New(Character())
 		end
 	end
 	
