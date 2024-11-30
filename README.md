@@ -6,7 +6,7 @@ Motiona represents an enhanced and refined iteration of Bubble.
 
 Current Version 
 **`
-v0.0.1 ALPHA *
+v0.0.2 ALPHA *
 `**
 
 Created by **BeemzZy** 
