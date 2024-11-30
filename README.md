@@ -22,6 +22,8 @@ Script:
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/heads/main/source.lua"))()
 ```
 ## An overview of our current features alongside the latest changes and enhancements.
+ • Compatible across both mobile and desktop platforms, seamlessly functioning with all types of executors.
+
  • The animation you implemented persists even after the player respawns following their demise. (The animation you applied stays whenever you die.)
 
  • Complete Bundle of Animations (including previously canceled and exclusive, unreleased ones)
