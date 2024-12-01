@@ -40,8 +40,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/BeemTZy/Motiona/refs/
 ![image](https://github.com/user-attachments/assets/1b424fa8-36c5-4d9e-bb8b-3f76677939a8)
 ![image](https://github.com/user-attachments/assets/e7bd54f6-ef30-4b4b-8735-7015e5e87726)
 
-### Full GUI from Motiona v0.0.1
-![image](https://github.com/user-attachments/assets/0572881e-483e-4c3f-b7b4-4825a6ecd658)
+### Full GUI from Motiona v0.0.3
+![image](https://github.com/user-attachments/assets/da0ef921-4deb-462b-a451-1f66227bb000)
 
 ## Currently Working On
 
