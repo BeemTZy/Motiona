@@ -4658,6 +4658,36 @@ G2L_MODULES[G2L["ba"]] = {
 G2L_MODULES[G2L["fb"]] = {
 	Closure = function()
 		local script = G2L["fb"];local BA_ = {
+			["Catwalk Glam Animation"] = {
+				climb = {
+					ClimbAnim = "http://www.roblox.com/asset/?id=119377220967554",
+				},
+				fall = {
+					FallAnim = "http://www.roblox.com/asset/?id=92294537340807",
+				},
+				jump = {
+					JumpAnim = "http://www.roblox.com/asset/?id=116936326516985",
+				},
+				run = {
+					RunAnim = "http://www.roblox.com/asset/?id=81024476153754",
+				},
+				idle = {
+					Animation2 = "http://www.roblox.com/asset/?id=94970088341563",
+					Animation1 = "http://www.roblox.com/asset/?id=133806214992291",
+				},
+				pose = {
+					StylishPose = "http://www.roblox.com/asset/?id=87105332133518",
+				},
+				swim = {
+					Swim = "http://www.roblox.com/asset/?id=134591743181628",
+				},
+				swimidle = {
+					SwimIdle = "http://www.roblox.com/asset/?id=98854111361360",
+				},
+				walk = {
+					WalkAnim = "http://www.roblox.com/asset/?id=109168724482748",
+				},
+			},
 			["Stylized-Female Animation"] = {
 				climb = {
 					ClimbAnim = "http://www.roblox.com/asset/?id=4708184253",
@@ -5717,21 +5747,21 @@ G2L_MODULES[G2L["fd"]] = {
 			["Yungblud Happier Jump"] = {15609995579, 15610015346},
 			["Baby Queen - Face Frame"] = {14352340648, 14353421343},
 			["Chappell Roan HOT TO GO!"] = {85267023718407, 79312439851071},
-			["Baby Queen - Strut"] = {14352362059, 14353425085},
-			["Godlike"] = {10714347256, 3823158750},
-			["Mae Stephens - Piano Hands"] = {16553163212, 16553249658},
-			["Alo Yoga Pose - Lotus Position"] = {12507085924, 12507097350},
-			["d4vd - Backflip"] = {15693621070, 15694504637},
-			["Skibidi Toilet - Titan Speakerman Laser Spin"] = {134283166482394, 103102322875221},
-			["Elton John - Heart Shuffle"] = {17748314784, 17748346932},
-			["Cuco - Levitate"] = {15698404340, 15698511500},
-			["Hero Landing"] = {10714360164, 5104377791},
-			["Cha-Cha"] = {10714018192, 3696764866},
-			["Air Guitar"] = {10713959108, 3696761354},
-			["Quiet Waves"] = {10714390497, 7466046574},
-			["BURBERRY LOLA ATTITUDE - HYDRO"] = {10147823318, 10147926081},
-			["BURBERRY LOLA ATTITUDE - BLOOM"] = {10714007154, 10147919199},
-			["Superhero Reveal"] = {10714355069, 3696759798},
+	["Baby Queen - Strut"] = {14352362059, 14353425085},
+	["Godlike"] = {10714347256, 3823158750},
+	["Mae Stephens - Piano Hands"] = {16553163212, 16553249658},
+	["Alo Yoga Pose - Lotus Position"] = {12507085924, 12507097350},
+	["d4vd - Backflip"] = {15693621070, 15694504637},
+	["Skibidi Toilet - Titan Speakerman Laser Spin"] = {134283166482394, 103102322875221},
+	["Elton John - Heart Shuffle"] = {17748314784, 17748346932},
+	["Cuco - Levitate"] = {15698404340, 15698511500},
+	["Hero Landing"] = {10714360164, 5104377791},
+	["Cha-Cha"] = {10714018192, 3696764866},
+	["Air Guitar"] = {10713959108, 3696761354},
+	["Quiet Waves"] = {10714390497, 7466046574},
+	["BURBERRY LOLA ATTITUDE - HYDRO"] = {10147823318, 10147926081},
+	["BURBERRY LOLA ATTITUDE - BLOOM"] = {10714007154, 10147919199},
+	["Superhero Reveal"] = {10714355069, 3696759798},
 	["Heisman Pose"] = {10714357129, 3696763549},
 	["High Wave"] = {10714362852, 5915776835},
 	["BURBERRY LOLA ATTITUDE - REFLEX"] = {10714010337, 10147921916},
